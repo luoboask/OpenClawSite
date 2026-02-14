@@ -1,10 +1,18 @@
+"use client";
+
 import Link from 'next/link'
 import { BookOpen, Zap, Shield, MessageCircle, Terminal, ChevronRight } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { SearchButton, SearchModal } from '@/components/search'
+import { useState } from 'react'
 
 export default function Home() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800 dark:text-white transition-colors duration-200">
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      
       {/* Hero Section */}
       <header className="relative overflow-hidden">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -21,6 +29,7 @@ export default function Home() {
               <Link href="/tutorials" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition">教程</Link>
               <Link href="/channels" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition">频道接入</Link>
               <Link href="/tools" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition">工具</Link>
+              <SearchButton onClick={() => setIsSearchOpen(true)} />
               <ThemeToggle />
             </div>
             <Link 
