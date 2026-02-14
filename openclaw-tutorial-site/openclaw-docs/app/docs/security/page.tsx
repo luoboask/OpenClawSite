@@ -24,7 +24,7 @@ export default function SecurityPage() {
       <p>每个频道都应该配置 <code>allowFrom</code> 选项，只允许特定用户访问：</p>
 
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>{
+<code>{`{
   "channels": {
     "telegram": {
       "enabled": true,
@@ -36,7 +36,7 @@ export default function SecurityPage() {
       "allowFrom": ["+86138xxxxxxxx", "+86139xxxxxxxx"]
     }
   }
-}</code>
+}`}</code>
       </pre>
 
       <h3>群组安全</h3>
@@ -44,12 +44,12 @@ export default function SecurityPage() {
       <p>在群组中，建议启用 <code>requireMention</code>：</p>
 
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>"groups": {
+<code>{`"groups": {
   "*": {
     "requireMention": true,
     "mentionPatterns": ["@mybot", "AI助手"]
   }
-}</code>
+}`}</code>
       </pre>
 
       <h2>API 密钥管理</h2>

@@ -32,7 +32,7 @@ export default function iMessagePage() {
       <p>编辑配置文件 <code>~/.openclaw/openclaw.json</code>：</p>
 
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>{
+<code>{`{
   "channels": {
     "imessage": {
       "enabled": true,
@@ -40,7 +40,7 @@ export default function iMessagePage() {
       "autoReply": true
     }
   }
-}</code>
+}`}</code>
       </pre>
 
       <h3>2. 授权辅助功能</h3>
@@ -54,7 +54,7 @@ export default function iMessagePage() {
         <li>开启开关授权</li>
       </ol>
 
-      <h3㸾3. 重启 Gateway</h3>
+      <h3>3. 重启 Gateway</h3>
 
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
 <code>openclaw gateway restart</code>

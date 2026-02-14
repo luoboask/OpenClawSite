@@ -48,90 +48,57 @@ export default function ToolsPage() {
 
       <p>创建工具目录：</p>
 
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-<code>mkdir -p ~/.openclaw/skills/weather</code>
-      </pre>
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{`mkdir -p ~/.openclaw/skills/weather`}</code></pre>
 
-      <p>创建 <code>SKILL.md</code>：</p>
+      <p>创建 SKILL.md：</p>
 
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code># Weather Tool
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`# Weather Tool
 
 查询指定城市的天气信息。
 
 ## 用法
 
-<!-- @weather -->
-{
-  "city": "string // 城市名称，如：北京、上海"
-}
-<!-- @weather -->
+{ "city": "string // 城市名称，如：北京、上海" }
 
 ## 示例
 
 查询北京天气：
-<!-- @weather {"city": "北京"} --><!-- @weather -->
-</code>
-      </pre>
+{ "city": "北京" }`}</code></pre>
 
-      <p>创建 <code>index.js</code>：</p>
+      <p>创建 index.js：</p>
 
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>module.exports = async function(params, context) {
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`module.exports = async function(params, context) {
   const { city } = params;
   
   // 这里调用天气 API
-  // 示例：使用 wttr.in
-  const response = await fetch(`https://wttr.in/${city}?format=j1`);
-  const data = await response.json();
+  // const weather = await fetchWeather(city);
   
   return {
-    city: city,
-    temperature: data.current_condition[0].temp_C,
-    condition: data.current_condition[0].lang_zh[0].value,
-    humidity: data.current_condition[0].humidity
+    temperature: "25°C",
+    condition: "晴天",
+    humidity: "60%"
   };
-};</code>
-      </pre>
+};`}</code></pre>
 
       <h2>工具配置</h2>
 
-      <p>在 <code>openclaw.json</code> 中启用工具：</p>
+      <p>在 <code>openclaw.json</code> 中启用/禁用工具：</p>
 
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>{
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`{
   "tools": {
-    "weather": {
-      "enabled": true
-    }
+    "weather": { "enabled": true },
+    "exec": { "enabled": false }
   }
-}</code>
-      </pre>
+}`}</code></pre>
 
-      <h2>ClawHub 工具库</h2>
+      <h2>最佳实践</h2>
 
-      <p>社区维护的工具库，可以通过命令安装：</p>
-
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-<code># 搜索可用工具
-openclaw skills search weather
-
-# 安装工具
-openclaw skills install weather
-
-# 列出已安装工具
-openclaw skills list</code>
-      </pre>
-
-      <h2>发布工具</h2>
-
-      <p>如果你开发了有用的工具，可以发布到 ClawHub：</p>
-
-      <ol>
-        <li>确保工具目录包含完整的 SKILL.md</li>
-        <li>在 GitHub 创建仓库</li>
-        <li>提交到 ClawHub（具体流程参考官方文档）</li>
-      </ol>
+      <ul>
+        <li>工具描述要清晰，让 Agent 知道何时使用该工具</li>
+        <li>参数类型要明确，提供示例</li>
+        <li>错误处理要完善，返回有意义的错误信息</li>
+        <li>敏感操作（如 exec）要谨慎启用</li>
+      </ul>
     </div>
   )
 }

@@ -31,7 +31,7 @@ export default function WhatsAppPage() {
       <p>编辑配置文件 <code>~/.openclaw/openclaw.json</code>：</p>
 
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>{
+<code>{`{
   "channels": {
     "whatsapp": {
       "enabled": true,
@@ -43,7 +43,7 @@ export default function WhatsAppPage() {
       }
     }
   }
-}</code>
+}`}</code>
       </pre>
 
       <h3>2. 配置说明</h3>
@@ -92,7 +92,7 @@ export default function WhatsAppPage() {
       <h3>二维码不显示</h3>
       <p>确保终端支持图像显示，或者使用 <code>--qr-terminal</code> 选项使用 ASCII 二维码。</p>
 
-      <h3>会话过期>/h3>
+      <h3>会话过期</h3>
       <p>WhatsApp Web 会话会定期过期，需要重新扫描二维码。</p>
 
       <h3>多设备支持</h3>

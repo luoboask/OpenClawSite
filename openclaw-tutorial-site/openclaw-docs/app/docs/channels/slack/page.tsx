@@ -58,7 +58,7 @@ export default function SlackPage() {
       <p>编辑配置文件 <code>~/.openclaw/openclaw.json</code>：</p>
 
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>{
+<code>{`{
   "channels": {
     "slack": {
       "enabled": true,
@@ -72,7 +72,7 @@ export default function SlackPage() {
       }
     }
   }
-}</code>
+}`}</code>
       </pre>
 
       <h3>配置说明</h3>

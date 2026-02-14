@@ -12,18 +12,15 @@ export default function ConfigPage() {
 
       <h2>配置文件位置</h2>
 
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-<code># macOS/Linux
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{`# macOS/Linux
 ~/.openclaw/openclaw.json
 
 # Windows
-%USERPROFILE%\.openclaw\openclaw.json</code>
-      </pre>
+%USERPROFILE%\.openclaw\openclaw.json`}</code></pre>
 
       <h2>基础配置示例</h2>
 
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>{
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`{
   "gateway": {
     "host": "127.0.0.1",
     "port": 18789
@@ -40,8 +37,7 @@ export default function ConfigPage() {
   "agent": {
     "model": "anthropic/claude-3-5-sonnet-20241022"
   }
-}</code>
-      </pre>
+}`}</code></pre>
 
       <h2>配置项说明</h2>
 
@@ -75,18 +71,15 @@ export default function ConfigPage() {
       <h3>channels（频道设置）</h3>
 
       <h4>WebChat</h4>
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>"webchat": {
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`"webchat": {
   "enabled": true,
   "host": "127.0.0.1",
   "port": 18789,
   "basePath": "/"
-}</code>
-      </pre>
+}`}</code></pre>
 
       <h4>WhatsApp</h4>
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>"whatsapp": {
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`"whatsapp": {
   "enabled": true,
   "allowFrom": ["+86138xxxxxxxx"],
   "groups": {
@@ -94,12 +87,10 @@ export default function ConfigPage() {
       "requireMention": true
     }
   }
-}</code>
-      </pre>
+}`}</code></pre>
 
       <h4>Telegram</h4>
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>"telegram": {
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`"telegram": {
   "enabled": true,
   "botToken": "YOUR_BOT_TOKEN",
   "allowFrom": ["your_telegram_id"],
@@ -107,28 +98,23 @@ export default function ConfigPage() {
     "enabled": false,
     "url": "https://your-domain.com/webhook"
   }
-}</code>
-      </pre>
+}`}</code></pre>
 
       <h4>Discord</h4>
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>"discord": {
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`"discord": {
   "enabled": true,
   "botToken": "YOUR_BOT_TOKEN",
   "allowFrom": ["your_discord_id"]
-}</code>
-      </pre>
+}`}</code></pre>
 
       <h3>agent（Agent 设置）</h3>
 
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>"agent": {
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`"agent": {
   "model": "anthropic/claude-3-5-sonnet-20241022",
   "thinking": "low",
   "reasoning": false,
   "systemPrompt": "你是一个有帮助的 AI 助手。"
-}</code>
-      </pre>
+}`}</code></pre>
 
       <table className="min-w-full border-collapse border border-gray-300">
         <thead>
@@ -172,9 +158,7 @@ export default function ConfigPage() {
 
       <p>使用以下命令验证配置是否正确：</p>
 
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-<code>openclaw gateway config:validate</code>
-      </pre>
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>openclaw gateway config:validate</code></pre>
     </div>
   )
 }

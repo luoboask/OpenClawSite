@@ -77,7 +77,7 @@ export default function QuickStartPage() {
           <AlertCircle className="w-5 h-5 text-yellow-600 mt-0.5 mr-3 flex-shrink-0" />
           <div>
             <p className="text-yellow-900 font-medium">提示</p>
-            <p className="text-yellow-700 text-sm mt-1"
+            <p className="text-yellow-700 text-sm mt-1">
               你可以将 <code>export</code> 命令添加到你的 shell 配置文件（如 <code>~/.zshrc</code>）中，
               这样就不需要每次手动设置了。
             </p>

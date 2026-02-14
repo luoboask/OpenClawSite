@@ -13,19 +13,16 @@ export default function TroubleshootingPage() {
       <h2>安装问题</h2>
 
       <h3>npm install 失败</h3>
-      <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code># 问题：权限错误
+      <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`# 问题：权限错误
 EACCES: permission denied
 
 # 解决：使用 npx 临时运行
 npx openclaw gateway start
 
-# 或使用 volta/nvm 管理 Node 版本</code>
-      </pre>
+# 或使用 volta/nvm 管理 Node 版本`}</code></pre>
 
       <h3>Node.js 版本过低</h3>
-      <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code># 问题：需要 Node.js 22+
+      <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`# 问题：需要 Node.js 22+
 Error: Requires Node.js >= 22.0.0
 
 # 解决：升级 Node.js
@@ -34,8 +31,7 @@ brew upgrade node
 
 # 或使用 nvm
 nvm install 22
-nvm use 22</code>
-      </pre>
+nvm use 22`}</code></pre>
 
       <hr className="my-8" />
 
@@ -49,8 +45,7 @@ nvm use 22</code>
       </ul>
 
       <h3>端口被占用</h3>
-      <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code># 查看占用进程
+      <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`# 查看占用进程
 lsof -i :18789
 
 # 修改配置文件使用其他端口
@@ -59,8 +54,7 @@ lsof -i :18789
   "gateway": {
     "port": 18790
   }
-}</code>
-      </pre>
+}`}</code></pre>
 
       <hr className="my-8" />
 
@@ -75,14 +69,12 @@ lsof -i :18789
       </ul>
 
       <h3>API 请求失败</h3>
-      <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code># 问题：401 Unauthorized
+      <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`# 问题：401 Unauthorized
 # 解决：检查 API 密钥是否正确
 export ANTHROPIC_API_KEY="your-correct-key"
 
 # 问题：429 Rate Limit
-# 解决：降低请求频率，或升级 API 计划</code>
-      </pre>
+# 解决：降低请求频率，或升级 API 计划`}</code></pre>
 
       <hr className="my-8" />
 
@@ -115,16 +107,14 @@ export ANTHROPIC_API_KEY="your-correct-key"
 
       <p>日志文件位置：</p>
 
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-<code># 实时查看日志
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto"><code>{`# 实时查看日志
 tail -f ~/.openclaw/logs/gateway.log
 
 # 查看最后 100 行
 tail -n 100 ~/.openclaw/logs/gateway.log
 
 # 带过滤查看
-grep "ERROR" ~/.openclaw/logs/gateway.log</code>
-      </pre>
+grep "ERROR" ~/.openclaw/logs/gateway.log`}</code></pre>
 
       <hr className="my-8" />
 

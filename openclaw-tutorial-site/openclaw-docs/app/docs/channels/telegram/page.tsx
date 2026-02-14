@@ -31,7 +31,7 @@ export default function TelegramPage() {
       <p>编辑配置文件 <code>~/.openclaw/openclaw.json</code>：</p>
 
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>{
+<code>{`{
   "channels": {
     "telegram": {
       "enabled": true,
@@ -42,7 +42,7 @@ export default function TelegramPage() {
       }
     }
   }
-}</code>
+}`}</code>
       </pre>
 
       <h3>配置说明</h3>
@@ -85,14 +85,14 @@ export default function TelegramPage() {
       <p>配置群组权限：</p>
 
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>"telegram": {
+<code>{`"telegram": {
   "groups": {
     "*": {
       "requireMention": true,
       "mentionPatterns": ["@my_bot", "AI"]
     }
   }
-}</code>
+}`}</code>
       </pre>
 
       <h3>Webhook 模式（生产环境推荐）</h3>
@@ -100,13 +100,13 @@ export default function TelegramPage() {
       <p>如果你将 OpenClaw 部署在服务器上，建议使用 Webhook 模式：</p>
 
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>"telegram": {
+<code>{`"telegram": {
   "webhook": {
     "enabled": true,
     "url": "https://your-domain.com/webhook/telegram",
     "secret": "your_webhook_secret"
   }
-}</code>
+}`}</code>
       </pre>
 
       <h2>测试</h2>

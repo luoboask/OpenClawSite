@@ -59,8 +59,7 @@ export default function DiscordPage() {
 
       <p>编辑配置文件：</p>
 
-      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>{
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>{`{
   "channels": {
     "discord": {
       "enabled": true,
@@ -74,8 +73,7 @@ export default function DiscordPage() {
       }
     }
   }
-}</code>
-      </pre>
+}`}</code></pre>
 
       <h3>配置说明</h3>
 

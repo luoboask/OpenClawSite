@@ -57,7 +57,7 @@ brew install signal-cli
       <p>编辑配置文件：</p>
 
       <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-<code>{
+<code>{`{
   "channels": {
     "signal": {
       "enabled": true,
@@ -65,7 +65,7 @@ brew install signal-cli
       "allowFrom": ["+86139xxxxxxxx"]
     }
   }
-}</code>
+}`}</code>
       </pre>
 
       <h3>4. 启动 Gateway</h3>
