@@ -9,7 +9,7 @@
 - [x] ~~添加 Signal 接入教程~~ ✅ 2026-02-14
 - [x] ~~添加 Slack 接入教程~~ ✅ 2026-02-14
 - [x] ~~编写故障排查手册~~ ✅ 2026-02-14
-- [ ] 添加搜索功能
+- [x] ~~添加搜索功能~~ ✅ 已添加 SearchModal + 16 条索引
 - [ ] 优化移动端导航
 
 ### AI 咨询网站
@@ -28,7 +28,7 @@
 - [x] ~~优化 SEO meta 标签~~ ✅ 已添加 sitemap.xml 和 robots.txt
 - [x] ~~添加 sitemap.xml~~ ✅ 2026-02-14
 - [x] ~~添加 robots.txt~~ ✅ 2026-02-14
-- [ ] 添加 Google Analytics
+- [x] ~~添加 Google Analytics~~ ✅ 组件已添加（需配置 GA_ID）
 - [x] ~~配置 CI/CD~~ ✅ GitHub Actions 自动部署
 
 ## 低优先级

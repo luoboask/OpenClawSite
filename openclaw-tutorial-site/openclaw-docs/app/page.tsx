@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { BookOpen, Zap, Shield, MessageCircle, Terminal, ChevronRight } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { SearchButton, SearchModal } from '@/components/search'
+import { MobileNav } from '@/components/mobile-nav'
 import { useState } from 'react'
 
 export default function Home() {
@@ -32,12 +33,15 @@ export default function Home() {
               <SearchButton onClick={() => setIsSearchOpen(true)} />
               <ThemeToggle />
             </div>
-            <Link 
-              href="/docs/quickstart" 
-              className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition"
-            >
-              快速开始
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link 
+                href="/docs/quickstart" 
+                className="hidden sm:block bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition"
+              >
+                快速开始
+              </Link>
+              <MobileNav />
+            </div>
           </div>
         </nav>
 

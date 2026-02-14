@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GoogleAnalytics } from "@/components/analytics";
+import { PageLoader } from "@/components/page-loader";
+import { ScrollProgress } from "@/components/scroll-progress";
 
 export const metadata: Metadata = {
   title: "OpenClaw 中文教程 - 自托管 AI 网关",
@@ -27,6 +29,8 @@ export default function RootLayout({
       </head>
       <body className="antialiased bg-white dark:bg-gray-900 transition-colors duration-200">
         <ThemeProvider>
+          <PageLoader />
+          <ScrollProgress />
           {children}
         </ThemeProvider>
       </body>
