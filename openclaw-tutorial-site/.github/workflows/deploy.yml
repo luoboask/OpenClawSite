@@ -41,9 +41,13 @@ jobs:
       working-directory: ./ai-consulting
       run: npm run build
       
-    # Copy static files
-    - name: Copy static files
+    # Create combined dist
+    - name: Create combined dist
       run: |
+        mkdir -p dist
+        cp -r openclaw-docs/dist/* dist/
+        mkdir -p dist/ai-consulting
+        cp -r ai-consulting/dist/* dist/ai-consulting/
         cp robots.txt dist/
         cp sitemap.xml dist/
       
