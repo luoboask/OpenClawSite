@@ -1,0 +1,169 @@
+export const metadata = {
+  title: '进阶技巧 - OpenClaw 中文教程',
+  description: 'OpenClaw 进阶使用技巧和最佳实践',
+}
+
+export default function AdvancedPage() {
+  return (
+    <div className="prose prose-slate max-w-none">
+      <h1>进阶技巧</h1>
+      
+      <p>本文介绍 OpenClaw 的一些进阶使用技巧，帮助你更高效地使用这个 AI 网关。</p>
+
+      <h2>多模型切换</h2>
+
+      <p>你可以配置多个 AI 提供商，按需切换：</p>
+
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+<code>{
+  "agent": {
+    "model": "anthropic/claude-3-5-sonnet-20241022"
+  },
+  "models": {
+    "fast": "openai/gpt-4o-mini",
+    "coding": "anthropic/claude-3-5-sonnet-20241022",
+    "creative": "anthropic/claude-3-opus-20240229"
+  }
+}</code>
+      </pre>
+
+      <p>在对话中切换模型：</p>
+
+      <pre className="bg-gray-100 p-4 rounded-lg">
+<code>/user: 切换到快速模型
+/agent: 已切换到 gpt-4o-mini</code>
+      </pre>
+
+      <h2>自定义系统提示词</h2>
+
+      <p>通过自定义系统提示词，让 Agent 具备特定角色能力：</p>
+
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+<code>{
+  "agent": {
+    "systemPrompt": "你是一位经验丰富的软件开发工程师，擅长..."
+  }
+}</code>
+      </pre>
+
+      <h2>会话隔离与共享</h2>
+
+      <h3>个人隔离（默认）</h3>
+      <p>每个用户拥有独立的会话和记忆：</p>
+
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+<code>"sessions": {
+  "isolation": "per-sender"
+}</code>
+      </pre>
+
+      <h3>共享会话</h3>
+      <p>群组成员共享同一个会话上下文：</p>
+
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+<code>"sessions": {
+  "isolation": "per-channel"
+}</code>
+      </pre>
+
+      <h2>定时任务（Cron）</h2>
+
+      <p>使用内置的 cron 工具设置定时任务：</p>
+
+      <pre className="bg-gray-100 p-4 rounded-lg">
+<code>/user: 每天早上 9 点提醒我查看邮件
+/agent: 已创建定时任务，每天早上 9:00 提醒您查看邮件。</code>
+      </pre>
+
+      <p>查看所有定时任务：</p>
+
+      <pre className="bg-gray-100 p-4 rounded-lg">
+<code>/user: 列出所有定时任务
+/agent: 以下是您的定时任务：
+- 每天 09:00 提醒查看邮件</code>
+      </pre>
+
+      <h2>子 Agent 会话</h2>
+
+      <p>对于复杂任务，可以创建独立的子会话：</p>
+
+      <pre className="bg-gray-100 p-4 rounded-lg">
+<code>/user: 帮我研究一下 Kubernetes 的网络架构，稍后给我一份详细报告
+/agent: 好的，我将创建一个后台任务来研究这个话题。预计需要 10-15 分钟完成。
+
+[后台任务运行中...]
+
+/agent: 研究报告已完成！以下是 Kubernetes 网络架构的详细分析：
+...</code>
+      </pre>
+
+      <h2>工具调用控制</h2>
+
+      <h3>禁用特定工具</h3>
+
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+<code>{
+  "tools": {
+    "exec": { "enabled": false },
+    "write": { "enabled": false }
+  }
+}</code>
+      </pre>
+
+      <h3>工具白名单</h3>
+
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+<code>{
+  "tools": {
+    "*": { "enabled": false },
+    "read": { "enabled": true },
+    "web_search": { "enabled": true }
+  }
+}</code>
+      </pre>
+
+      <h2>备份与恢复</h2>
+
+      <h3㸾备份配置</h3>
+
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
+<code># 备份配置
+cp ~/.openclaw/openclaw.json ~/openclaw-backup.json
+
+# 备份记忆
+cp -r ~/.openclaw/workspace/memory ~/openclaw-memory-backup/
+
+# 使用脚本自动备份
+#!/bin/bash
+tar czf "openclaw-backup-$(date +%Y%m%d).tar.gz" ~/.openclaw/</code>
+      </pre>
+
+      <h2㸾性能优化</h2>
+
+      <h3㸾限制上下文长度</h3>
+
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+<code>{
+  "agent": {
+    "maxContextMessages": 20,
+    "maxTokens": 4000
+  }
+}</code>
+      </pre>
+
+      <h3㸾启用流式响应</h3㸾
+
+      <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+<code>{
+  "agent": {
+    "stream": true
+  }
+}</code>
+      </pre>
+
+      <hr className="my-8" />
+
+      <p㸾更多技巧请关注我们的 <a href="/blog">技术博客</a> 或加入 <a href="https://discord.com/invite/clawd">Discord 社区</a> 交流。</p>
+    </div>
+  )
+}
