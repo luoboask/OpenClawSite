@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://luoboask.github.io/OpenClawSite/sitemap.xml
