@@ -3,8 +3,16 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -20,55 +28,49 @@ jobs:
         node-version: '20'
         cache: 'npm'
         cache-dependency-path: |
-          openclaw-docs/package-lock.json
-          ai-consulting/package-lock.json
+          openclaw-tutorial-site/openclaw-docs/package-lock.json
+          openclaw-tutorial-site/ai-consulting/package-lock.json
     
     # Build OpenClaw Docs
     - name: Install dependencies (OpenClaw Docs)
-      working-directory: ./openclaw-docs
+      working-directory: ./openclaw-tutorial-site/openclaw-docs
       run: npm ci
       
     - name: Build OpenClaw Docs
-      working-directory: ./openclaw-docs
+      working-directory: ./openclaw-tutorial-site/openclaw-docs
       run: npm run build
       
     # Build AI Consulting
     - name: Install dependencies (AI Consulting)
-      working-directory: ./ai-consulting
+      working-directory: ./openclaw-tutorial-site/ai-consulting
       run: npm ci
       
     - name: Build AI Consulting
-      working-directory: ./ai-consulting
+      working-directory: ./openclaw-tutorial-site/ai-consulting
       run: npm run build
       
     # Create combined dist
     - name: Create combined dist
       run: |
-        mkdir -p dist
-        cp -r openclaw-docs/dist/* dist/
-        mkdir -p dist/ai-consulting
-        cp -r ai-consulting/dist/* dist/ai-consulting/
-        cp robots.txt dist/
-        cp sitemap.xml dist/
-      
+        mkdir -p _site
+        cp -r openclaw-tutorial-site/openclaw-docs/dist/* _site/
+        mkdir -p _site/ai-consulting
+        cp -r openclaw-tutorial-site/ai-consulting/dist/* _site/ai-consulting/
+        cp openclaw-tutorial-site/robots.txt _site/ 2>/dev/null || true
+        cp openclaw-tutorial-site/sitemap.xml _site/ 2>/dev/null || true
+        
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: ./dist
+        path: ./_site
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    
-    permissions:
-      pages: write
-      id-token: write
-    
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
+    runs-on: ubuntu-latest
+    needs: build
     steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
