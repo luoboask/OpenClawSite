@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link'
-import { BookOpen, Zap, Shield, MessageCircle, Terminal, ChevronRight } from 'lucide-react'
+import { BookOpen, Zap, Shield, MessageCircle, Terminal, ChevronRight, FileText, Users, Sparkles, ArrowRight } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { SearchButton, SearchModal } from '@/components/search'
 import { MobileNav } from '@/components/mobile-nav'
@@ -27,9 +27,10 @@ export default function Home() {
             </div>
             <div className="hidden md:flex space-x-6 items-center">
               <Link href="/docs" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition">文档</Link>
-              <Link href="/tutorials" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition">教程</Link>
+              <Link href="/blog" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition">博客</Link>
+              <Link href="/cases" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition">案例</Link>
               <Link href="/channels" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition">频道接入</Link>
-              <Link href="/tools" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition">工具</Link>
+              <Link href="/api-reference" className="text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition">API</Link>
               <SearchButton onClick={() => setIsSearchOpen(true)} />
               <ThemeToggle />
             </div>
@@ -185,6 +186,121 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Latest Articles */}
+      <section className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-gray-900 dark:to-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">最新文章</h2>
+              <p className="text-gray-600 dark:text-gray-400">深入了解 OpenClaw 的功能和最佳实践</p>
+            </div>
+            <Link 
+              href="/blog" 
+              className="hidden sm:flex items-center gap-2 text-orange-600 dark:text-orange-400 font-medium hover:underline"
+            >
+              查看全部 <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "OpenClaw 完全指南",
+                desc: "自托管 AI 网关的最新玩法与配置技巧",
+                link: "/blog/openclaw-complete-guide",
+                tag: "完整指南",
+                icon: FileText,
+                color: "orange"
+              },
+              {
+                title: "WhatsApp 接入实战",
+                desc: "从零开始配置你的 AI 助手",
+                link: "/blog/whatsapp-setup",
+                tag: "渠道配置",
+                icon: MessageCircle,
+                color: "green"
+              },
+              {
+                title: "工具系统深度解析",
+                desc: "20+ 工具使用指南",
+                link: "/blog/tools-deep-dive",
+                tag: "工具教程",
+                icon: Terminal,
+                color: "purple"
+              }
+            ].map((article, idx) => {
+              const Icon = article.icon;
+              return (
+                <Link key={idx} href={article.link} className="group block">
+                  <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-lg transition border border-gray-200 dark:border-gray-700 h-full">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className={`px-3 py-1 bg-${article.color}-100 dark:bg-${article.color}-900/30 text-${article.color}-600 dark:text-${article.color}-400 text-xs font-medium rounded-full`}>
+                        {article.tag}
+                      </span>
+                    </div>
+                    <div className={`w-12 h-12 bg-${article.color}-100 dark:bg-${article.color}-900/30 rounded-xl mb-4 flex items-center justify-center group-hover:scale-110 transition`}>
+                      <Icon className={`w-6 h-6 text-${article.color}-600 dark:text-${article.color}-400`} />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition">
+                      {article.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                      {article.desc}
+                    </p>
+                    <span className="text-orange-600 dark:text-orange-400 text-sm font-medium flex items-center">
+                      阅读更多 <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-8 text-center sm:hidden">
+            <Link 
+              href="/blog" 
+              className="inline-flex items-center gap-2 text-orange-600 dark:text-orange-400 font-medium hover:underline"
+            >
+              查看全部文章 <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies CTA */}
+      <section className="py-20 bg-white dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-3xl p-8 md:p-12 overflow-hidden relative">
+            {/* Background decoration */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+            
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
+                  <Sparkles className="w-6 h-6 text-white" />
+                  <span className="text-white/80 text-sm font-medium uppercase tracking-wider">真实案例</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  探索 OpenClaw 的应用场景
+                </h2>
+                <p className="text-white/90 text-lg max-w-2xl">
+                  从个人 AI 助手到团队协作机器人，从自动化工作流到智能家居控制，
+                  发现 OpenClaw 在真实世界中的无限可能。
+                </p>
+              </div>
+              <Link 
+                href="/cases"
+                className="flex-shrink-0 bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition flex items-center gap-2 shadow-lg"
+              >
+                <Users className="w-5 h-5" />
+                查看案例研究
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -217,9 +333,11 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">关于</h4>
+              <h4 className="font-semibold mb-4">资源</h4>
               <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link href="/about" className="hover:text-white">关于本站</Link></li>
+                <li><Link href="/blog" className="hover:text-white">博客</Link></li>
+                <li><Link href="/cases" className="hover:text-white">案例</Link></li>
+                <li><Link href="/api-reference" className="hover:text-white">API 参考</Link></li>
                 <li><Link href="/changelog" className="hover:text-white">更新日志</Link></li>
               </ul>
             </div>

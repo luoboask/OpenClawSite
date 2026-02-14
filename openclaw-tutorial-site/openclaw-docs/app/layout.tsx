@@ -26,8 +26,18 @@ export default function RootLayout({
     <html lang="zh-CN" suppressHydrationWarning>
       <head>
         <GoogleAnalytics />
+        <style dangerouslySetInnerHTML={{__html: `
+          /* 强制浅色模式样式，覆盖系统偏好 */
+          body { color: #000 !important; background-color: #fff !important; }
+          .dark body { color: #fff !important; background-color: rgb(17, 24, 39) !important; }
+        `}} />
       </head>
       <body className="antialiased bg-white dark:bg-gray-900 transition-colors duration-200">
+        <style dangerouslySetInnerHTML={{__html: `
+          /* 强制浅色模式样式，覆盖系统偏好 */
+          body { color: #000 !important; background-color: #fff !important; }
+          .dark body { color: #fff !important; background-color: rgb(17, 24, 39) !important; }
+        `}} />
         <ThemeProvider>
           <PageLoader />
           <ScrollProgress />

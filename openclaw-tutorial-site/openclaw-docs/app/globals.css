@@ -14,16 +14,17 @@
   --background-end-rgb: 17, 24, 39;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 17, 24, 39;
-    --background-end-rgb: 17, 24, 39;
-  }
+body {
+  color: rgb(var(--foreground-rgb)) !important;
+  background-color: #fff !important;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+/* 强制覆盖系统深色模式 */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #000 !important;
+    background-color: #fff !important;
+  }
 }
 
 /* Code block styles */

@@ -3,8 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: 'export',
   distDir: 'dist',
-  basePath: '/OpenClawSite/ai-consulting',
-  assetPrefix: '/OpenClawSite/ai-consulting',
+  basePath: '/ai-consulting',
+  assetPrefix: '/ai-consulting',
   images: {
     unoptimized: true
   }

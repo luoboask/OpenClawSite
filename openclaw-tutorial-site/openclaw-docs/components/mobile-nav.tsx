@@ -7,6 +7,8 @@ import { Menu, X, ChevronDown } from "lucide-react";
 const navItems = [
   { label: "首页", href: "/" },
   { label: "文档", href: "/docs" },
+  { label: "博客", href: "/blog" },
+  { label: "案例", href: "/cases" },
   {
     label: "教程",
     href: "#",
@@ -14,6 +16,7 @@ const navItems = [
       { label: "快速开始", href: "/docs/quickstart" },
       { label: "安装指南", href: "/docs/install" },
       { label: "配置详解", href: "/docs/config" },
+      { label: "API 参考", href: "/api-reference" },
     ],
   },
   {
